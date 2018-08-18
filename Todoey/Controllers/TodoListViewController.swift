@@ -12,16 +12,13 @@ class TodoListViewController: UITableViewController {
     
     var itemArray = [Item]()
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
         print(dataFilePath!)
         
     loadItems()
-        
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -34,14 +31,11 @@ class TodoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
         
         let item = itemArray[indexPath.row]
         
         cell.textLabel?.text = item.title
-        
         
         cell.accessoryType = item.done == true ? .checkmark : .none
         
@@ -64,7 +58,6 @@ class TodoListViewController: UITableViewController {
         
         var textField = UITextField()
         
-        
         let alert = UIAlertController(title: "Add new Todoey item.", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
             
@@ -74,18 +67,14 @@ class TodoListViewController: UITableViewController {
             self.itemArray.append(newItem)
             self.saveItems()
             
-            
         }
             alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "Create new item."
             textField = alertTextField
         }
         
-        
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
-        
-        
         
     }
     
@@ -102,7 +91,6 @@ class TodoListViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    
     func loadItems() {
         
         if let data = try? Data(contentsOf: dataFilePath!) {
@@ -113,7 +101,6 @@ class TodoListViewController: UITableViewController {
                 print("Error decoding item array, \(error)")
             }
         }
-        
         
     }
 }
