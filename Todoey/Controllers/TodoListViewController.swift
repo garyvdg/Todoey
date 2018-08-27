@@ -72,7 +72,7 @@ class TodoListViewController: SwipeTableViewController {
         
         var textField = UITextField()
         
-        let alert = UIAlertController(title: "Add new Todoey item.", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add new Todoey Item.", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
             
             if let currentCategory = self.selectedCategory {
