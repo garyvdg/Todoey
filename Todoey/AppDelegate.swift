@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             _ = try Realm()
             
         } catch {
-            print ("Error initializing Realm, \(error)")
+            print ("Error starting Realm, \(error)")
         }
         
         return true
